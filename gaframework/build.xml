@@ -1,0 +1,35 @@
+<project name="Framework de Algoritmos Genéticos" default="all">
+
+  <target name="build">
+    <mkdir dir="build"/>
+    <javac srcdir="src"
+	   destdir="build"
+	   includeantruntime="false">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+  
+  <target name="clean">
+    <delete dir="build"/>
+    <delete dir="dist"/>
+    <delete dir="doc"/>
+  </target>
+  
+  <target name="dist" depends="build">
+    <mkdir dir="dist"/>
+    <jar destfile="dist/FrameworkAG.jar"
+	 basedir="build"
+	 />
+  </target>
+
+  <target name="doc">
+    <mkdir dir="doc"/>
+    <javadoc sourcepath="src"
+	     destdir="doc"
+	     access="public"
+	     encoding="iso-8859-1"/>
+  </target>
+
+  <target name="all" depends="build,doc"/>
+  
+</project>
