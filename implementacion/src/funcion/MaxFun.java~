@@ -1,0 +1,13 @@
+import gaframework.*;
+
+public class MaxFun implements FitnessFunction<Integer>{
+    public double evaluate(Phenotype<Integer> p){
+	if(p == null)
+	    System.out.println("Fenotipo null");
+	int x = p.getAllele(0).intValue();
+	if(x == null)
+	    System.out.println("Alelo null");
+	
+	return x*(1024-x);
+    }
+}
