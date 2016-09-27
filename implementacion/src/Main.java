@@ -1,5 +1,5 @@
 import gaframework.*;
-import gaframeworkgui.*;
+//import gaframeworkgui.*;
 import gaframework.*;
 
 public class Main{
@@ -11,11 +11,11 @@ public class Main{
 	MaxFun ff = new MaxFun();
 	NumGeneraciones ng = new NumGeneraciones(1000);
 	
-	//Simple<Boolean, Integer> algoSimple = new Simple<>(cod,null,opcruza,opmutacion,ruleta,ff,ng,20);
-	Simple<Boolean, Integer> algoSimple = new Simple<>(cod,null,opcruza,opmutacion,ruleta,ff,null,ng,20);
-	gaframeworkgui.GAGUI.setGA(algoSimple);
-	  gaframeworkgui.GAGUI.launch(gaframeworkgui.GAGUI.class);
-	//algoSimple.run();
+	Simple<Boolean, Integer> algoSimple = new Simple<>(cod,null,opcruza,opmutacion,ruleta,ff,ng,20);
+	// Simple<Boolean, Integer> algoSimple = new Simple<>(cod,null,opcruza,opmutacion,ruleta,ff,null,ng,20);
+	// gaframeworkgui.GAGUI.setGA(algoSimple);
+	// gaframeworkgui.GAGUI.launch(gaframeworkgui.GAGUI.class);
+	algoSimple.run();
 	
     }
 }
