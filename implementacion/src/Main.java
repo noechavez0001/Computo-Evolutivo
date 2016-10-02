@@ -12,7 +12,7 @@ public class Main{
     	TSPInstance problem = new TSPInstance(new File("./data/tsp/burma14.tsp"));
     	EncodeProblem encoder =  new EncodeProblem(problem);
     	
-        System.out.println(genotype);
+        System.out.println(encoder.newRandomGenotype());
     	/* Obtenemos los nodos en orden arbitrario*/ 
     	
 
