@@ -1,26 +1,52 @@
-<project name="Framework de Algoritmos Genéticos" default="build">
+<project name="Framework de Algoritmos Genéticos" default="run">
+  <property name="libs"         location="libs" />
 
-  <target name="build">
-    <mkdir dir="build"/>
-    <javac srcdir="src"
-	   destdir="build"
-	   includeantruntime="false"
-	   classpath="lib/FrameworkAG.jar">
-      <compilerarg value="-Xlint"/>
-    </javac>
-  </target>
+  <path id="project.class.path">
+    <pathelement location="lib/FrameworkAG.jar" />
+  </path>
   
   <target name="clean">
     <delete dir="build"/>
     <delete dir="dist"/>
     <delete dir="doc"/>
   </target>
+
+    <target name="init">
+    <mkdir dir="build"/>
+  </target>
+
+
+    <target name="build" depends="init">
+    <mkdir dir="build"/>
+    <javac srcdir="src"
+     destdir="build">
+      <compilerarg value="-Xlint"/>
+      <classpath refid="project.class.path" />
+    </javac>
+  </target>
+
+  <manifest file="build/MANIFEST.MF">
+    <attribute name="Main-Class"
+               value="Main" />
+  </manifest>
   
   <target name="dist" depends="build">
-    <mkdir dir="dist"/>
-    <jar destfile="dist/FrameworkAG.jar"
-	 basedir="build"
-	 />
+      <jar destfile="TSP.jar"
+       manifest="build/MANIFEST.MF">
+    <fileset dir="build" />
+  </jar>
+
   </target>
+
+<target name="run" depends="dist">
+    <jar destfile="outapp.jar" basedir="build">
+        <manifest>
+            <attribute name="Main-Class" value="Main" />
+            <attribute name="Class-Path"
+                value="./lib/FrameworkAG.jar 
+                  ./lib/TSPLIB4J-0.2.jar" />
+        </manifest>
+    </jar>
+</target>
   
 </project>
