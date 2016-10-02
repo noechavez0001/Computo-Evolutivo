@@ -21,7 +21,6 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     	for (int i = 0; i < nodes.length; i++) {
     		toCode.add(i, nodes[i]);
     	}
-
     	System.out.println(toCode);
     }
     /* 
@@ -31,16 +30,11 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     @SuppressWarnings("unchecked")
     public Genotype<Integer> encode (Phenotype<Integer> p) {
 		ArrayList<Integer> toCodeClone =  (ArrayList<Integer>)this.toCode.clone();
-		/*  quitamos el primer elemento para evitar errores en la mutacion */
 		Genotype<Integer> coded = new Genotype<>(p.size());
 		int index = 0;
 		for (int i = 0; i < p.size() ; i++ ) {
-			boolean has = toCodeClone.contains(p.getAllele(i));
-			
-			if (has)
-				index =  toCodeClone.indexOf(p.getAllele(i));
-
-			toCodeClone.remove(index);
+			index =  toCodeClone.indexOf(p.getAllele(i));
+			int node = toCodeClone.remove(index);
 			coded.setGene(i, index);
 		}
 		return coded;
@@ -52,15 +46,9 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     	/*  quitamos el primer elemento para evitar errores en la mutacion */
     	Phenotype<Integer> decoded = new Phenotype<>(g.size());
     	int index = 0;
-    	boolean has =  false;
     	for (int i = 0; i < g.size() ; i++ ) {
-    		has = toCodeClone.contains(g.getGene(i));
-
-    		if (has)
-    			index = toCodeClone.indexOf(g.getGene(i));
-
-    		toCodeClone.remove(index);
-    		decoded.setAllele(i, index);
+    		int node = toCodeClone.remove((int)g.getGene(i));
+    		decoded.setAllele(i, node);
     	}
     	return decoded;
     }
@@ -70,12 +58,15 @@ public class EncodeProblem implements Codification<Integer, Integer>{
 		Random r = new Random();
 		ArrayList<Integer> toCodeClone =  (ArrayList<Integer>)this.toCode.clone();
 		/* shuffle the cities */
-		Collections.shuffle((ArrayList<Integer>)toCodeClone.clone(), new Random(r.nextInt()));
+		Collections.shuffle(toCodeClone);
 		Phenotype<Integer> newPhenotype =  new Phenotype<Integer>(toCodeClone.size());
+		
+		System.out.println(toCodeClone);
+
 
 		for(int i = 0; i < toCodeClone.size(); i++)
 		    newPhenotype.setAllele(i,toCodeClone.get(i));
-		
+
 		return this.encode(newPhenotype);
     }
     

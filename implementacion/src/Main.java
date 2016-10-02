@@ -11,8 +11,10 @@ public class Main{
 
     	TSPInstance problem = new TSPInstance(new File("./data/tsp/burma14.tsp"));
     	EncodeProblem encoder =  new EncodeProblem(problem);
+        Genotype<Integer> gen = encoder.newRandomGenotype();
     	
-        System.out.println(encoder.newRandomGenotype());
+        System.out.println("Genotype: " + gen);
+        System.out.println("Phenotype:" +  encoder.decode(gen));
     	/* Obtenemos los nodos en orden arbitrario*/ 
     	
 
