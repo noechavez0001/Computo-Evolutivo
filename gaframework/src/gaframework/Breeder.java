@@ -56,7 +56,7 @@ public class Breeder<G,P> {
      * @return Un nuevo individuo aleatorio.
      */
     public Individual<G,P> newRandomIndividual(){
-	return newIndividual(codification.newRandomGenotype());
+	   return newIndividual(codification.newRandomGenotype());
     }
       
     /**

@@ -9,10 +9,10 @@ public class Main{
 
     public static void main(String[] argumenta) throws IOException {
 
-    	TSPInstance problem = new TSPInstance(new File("./data/tsp/pcb442.tsp"));
-
-    	BinInteger cod =  new BinInteger(10, problem.getDimension());
-    	cod.encode(BinInteger.encodeProblem(problem));
+    	TSPInstance problem = new TSPInstance(new File("./data/tsp/burma14.tsp"));
+    	EncodeProblem encoder =  new EncodeProblem(problem);
+    	
+        System.out.println(genotype);
     	/* Obtenemos los nodos en orden arbitrario*/ 
     	
 
