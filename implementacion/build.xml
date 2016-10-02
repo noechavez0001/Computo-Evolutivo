@@ -3,6 +3,7 @@
 
   <path id="project.class.path">
     <pathelement location="lib/FrameworkAG.jar" />
+    <pathelement location="lib/TSPLIB4J-0.2.jar" />
   </path>
   
   <target name="clean">
