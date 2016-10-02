@@ -21,8 +21,9 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     	for (int i = 0; i < nodes.length; i++) {
     		toCode.add(i, nodes[i]);
     	}
-    }
 
+    	System.out.println(toCode);
+    }
     /* 
     	el fenotipo es una lista de las ciudades indexadas
     	por nodo
@@ -54,8 +55,10 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     	boolean has =  false;
     	for (int i = 0; i < g.size() ; i++ ) {
     		has = toCodeClone.contains(g.getGene(i));
+
     		if (has)
     			index = toCodeClone.indexOf(g.getGene(i));
+
     		toCodeClone.remove(index);
     		decoded.setAllele(i, index);
     	}
