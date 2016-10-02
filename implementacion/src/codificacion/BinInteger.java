@@ -1,6 +1,8 @@
 import gaframework.*;
 import java.util.BitSet;
 import java.util.Random;
+import org.moeaframework.problem.tsplib.*;
+
 
 public class BinInteger implements Codification<Boolean, Integer>{
     private int numBits; //el número de bits para representar un entero
@@ -80,6 +82,19 @@ public class BinInteger implements Codification<Boolean, Integer>{
 	return nuevo;
     }
     
+
+    public static Phenotype<Integer> encodeProblem(TSPInstance problem) {
+    	int [] phenotype = problem.getFixedEdges().listNodes();
+    	Phenotype<Integer> phen =  new Phenotype<>(phenotype.length + 1);
+    	/* creamos el ciclo*/
+    	phen.setAllele(0, phenotype[0]);
+    	phen.setAllele(phenotype.length, phenotype[0]);
+    	/* omitimos el primero y el úñtimo */
+    	for (int i = 1; i < phenotype.length; i++) {
+    		phen.setAllele(i, phenotype[i]);
+    	}
+    	return phen;
+    }
 
     
 
