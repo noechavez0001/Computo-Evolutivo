@@ -29,6 +29,8 @@ public class Simple<G,P> implements GeneticAlgorithm<G,P> {
 
     public Population<G,P> iteration(Population<G,P> current) {
 	Population<G,P> out = new Population<>(current.getGeneration() + 1);
+	Individual<G,P> mejor = current.getBestIndividual();
+	//out.addIndividual(mejor);
 	while (out.size() < current.size()) {
 	    // Seleccion
 	    List<Individual<G,P>> selectionList = selectionOp.select(current);
@@ -39,20 +41,23 @@ public class Simple<G,P> implements GeneticAlgorithm<G,P> {
 	    List<Genotype<G>> crossedList = crossoverOp.crossover(genotypeList);
 	    // Mutacion
 	    List<Genotype<G>> mutatedList = new LinkedList<>();
-	    for (Genotype<G> c:crossedList)
-		mutatedList.add(mutationOp.mutate(c));
+	    for (Genotype<G> c:crossedList)	
+			mutatedList.add(mutationOp.mutate(c));
 	    // Nuevos individuos
-	    for (Genotype<G> m:mutatedList)
-		out.addIndividual(breeder.newIndividual(m));
+	    for (Genotype<G> c:crossedList){
+		out.addIndividual(breeder.newIndividual(c));
+		}
 	}
-	return out;	    
+
+	return out;   
     }
     
     public void run(){
 	Population<G,P> p = breeder.newRandomPopulation(popSize);
 	while(!termination.conditionReached(p)){
 	    p = iteration(p);
-	    System.out.println(p.getBestIndividual());
+	    Individual<G,P> m = p.getBestIndividual();
+	    System.out.println(m);
 	}
     }
 

@@ -11,18 +11,18 @@ public class OnePointCrossover<G> implements CrossoverOp<G>{
 	r = new Random(seed);
     }
     public List<Genotype<G>> crossover(List<Genotype<G>> parents){
-	Genotype<G> p1 = parents.get(0);
-	Genotype<G> p2 = parents.get(0);
+	Genotype<G> p1 = parents.get(r.nextInt(parents.size()));
+	Genotype<G> p2 = parents.get(r.nextInt(parents.size()));
 	Genotype<G> out1 = new Genotype<>(p1.size());
 	Genotype<G> out2 = new Genotype<>(p2.size());
 	if (r.nextDouble() < prob) {
 	    int point = r.nextInt(p1.size());
 	    for (int i=0; i < point; i++) {
-		out1.setGene(i, p1.getGene(i));
-		out2.setGene(i, p2.getGene(i));
+		out1.setGene(i, p2.getGene(i));
+		out2.setGene(i, p1.getGene(i));
 	    }
 	    for (int i= point; i< p1.size(); i++) {
-		out1.setGene(i, p2.getGene(i));
+		out1.setGene(i, p1.getGene(i));
 		out2.setGene(i, p2.getGene(i));						
 	    }
 	}
@@ -35,6 +35,10 @@ public class OnePointCrossover<G> implements CrossoverOp<G>{
 	    }
 	    
 	}
+	// System.out.println(p1);
+	// System.out.println(p2);
+	// System.out.println(out1);
+	// System.out.println(out2);
 	LinkedList<Genotype<G>> l = new LinkedList<>();
 	l.add(out1);
 	l.add(out2);

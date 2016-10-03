@@ -21,7 +21,8 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     	for (int i = 0; i < nodes.length; i++) {
     		toCode.add(i, nodes[i]);
     	}
-    	System.out.println(toCode);
+        System.out.println("La Ciudad Origen es:");
+    	System.out.println(toCode.get(0));
     }
     /* 
     	el fenotipo es una lista de las ciudades indexadas

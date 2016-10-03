@@ -7,7 +7,7 @@ import gaframework.Population;
  * 
  */
 
-public class NumGeneraciones implements TerminationCondition<Boolean, Integer>{
+public class NumGeneraciones implements TerminationCondition<Integer, Integer>{
     /** Atributos **/
     private int numGen;
 
@@ -16,7 +16,7 @@ public class NumGeneraciones implements TerminationCondition<Boolean, Integer>{
 	this.numGen =  numGen;
     }
     /** Comportamiento**/
-    public boolean conditionReached(Population<Boolean,Integer> p){
+    public boolean conditionReached(Population<Integer,Integer> p){
 	return p.getGeneration() >= numGen;
     }
 }
