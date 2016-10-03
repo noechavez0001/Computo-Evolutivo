@@ -11,7 +11,6 @@ public class UniformMutation implements MutationOp<Integer>{
 		this.p = new Random(seed);
     }
     public Genotype<Integer> mutate(Genotype<Integer> g){
-    	System.out.println("----------------------------\n " +  g);
 		int gsize = g.size();
 		Genotype<Integer> out = new Genotype<>(gsize);
 		for (int i=0; i<gsize; i++) {
