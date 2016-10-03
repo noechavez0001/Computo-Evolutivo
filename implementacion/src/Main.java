@@ -34,13 +34,13 @@ public class Main{
     	// frame.setVisible(true);
 
 		EncodeProblem cod = new EncodeProblem(problem);
-		OnePointCrossover<Integer> opcruza = new OnePointCrossover<>(5, 0.25);
-		UniformMutation opmutacion = new UniformMutation(0.25, 5);
+		OnePointCrossover<Integer> opcruza = new OnePointCrossover<>(5, 0.9);
+		UniformMutation opmutacion = new UniformMutation(0.90, 5);
 		Ruleta<Integer,Integer> ruleta = new Ruleta<>(5, 10);
 	    Fitness ff = new Fitness(problem);
-		NumGeneraciones ng = new NumGeneraciones(10);
+		NumGeneraciones ng = new NumGeneraciones(5000);
 
-		Simple<Integer, Integer> algoSimple = new Simple<Integer, Integer>(cod,null,opcruza,opmutacion,ruleta,ff,ng, 200);
+		Simple<Integer, Integer> algoSimple = new Simple<Integer, Integer>(cod,null,opcruza,opmutacion,ruleta,ff,ng, 1000);
 		// Simple<Boolean, Integer> algoSimple = new Simple<>(cod,null,opcruza,opmutacion,ruleta,ff,null,ng,20);
 		// gaframeworkgui.GAGUI.setGA(algoSimple);
 		// gaframeworkgui.GAGUI.launch(gaframeworkgui.GAGUI.class);

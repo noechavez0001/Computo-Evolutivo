@@ -30,9 +30,9 @@ public class Simple<G,P> implements GeneticAlgorithm<G,P> {
     public Population<G,P> iteration(Population<G,P> current) {
 	Population<G,P> out = new Population<>(current.getGeneration() + 1);
 	Individual<G,P> mejor = current.getBestIndividual();
-	//out.addIndividual(mejor);
+	out.addIndividual(mejor);
 	while (out.size() < current.size()) {
-	    // Seleccion
+	    //// Seleccion
 	    List<Individual<G,P>> selectionList = selectionOp.select(current);
 	    // Cruza
 	    List<Genotype<G>> genotypeList = new LinkedList<>();
