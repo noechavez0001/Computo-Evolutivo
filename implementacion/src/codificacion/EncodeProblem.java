@@ -58,15 +58,19 @@ public class EncodeProblem implements Codification<Integer, Integer>{
     public Genotype<Integer> newRandomGenotype(){
 		Random r = new Random();
 		ArrayList<Integer> toCodeClone =  (ArrayList<Integer>)this.toCode.clone();
-		/* shuffle the cities */
+		/* quitamos la ciudad de origen*/
+        int first = toCodeClone.remove(0);
+        /* shuffle the cities */
 		Collections.shuffle(toCodeClone);
+        toCodeClone.add(0, first);
 		Phenotype<Integer> newPhenotype =  new Phenotype<Integer>(toCodeClone.size());
 		
 		System.out.println(toCodeClone);
 
-
 		for(int i = 0; i < toCodeClone.size(); i++)
 		    newPhenotype.setAllele(i,toCodeClone.get(i));
+
+        System.out.println(newPhenotype);
 
 		return this.encode(newPhenotype);
     }

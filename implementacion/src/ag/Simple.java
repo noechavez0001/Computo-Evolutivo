@@ -36,16 +36,18 @@ public class Simple<G,P> implements GeneticAlgorithm<G,P> {
 	    List<Individual<G,P>> selectionList = selectionOp.select(current);
 	    // Cruza
 	    List<Genotype<G>> genotypeList = new LinkedList<>();
+	    
 	    for (Individual<G,P> s:selectionList)
-		genotypeList.add(s.getGenotype());
+			genotypeList.add(s.getGenotype());
+
 	    List<Genotype<G>> crossedList = crossoverOp.crossover(genotypeList);
 	    // Mutacion
 	    List<Genotype<G>> mutatedList = new LinkedList<>();
 	    for (Genotype<G> c:crossedList)	
 			mutatedList.add(mutationOp.mutate(c));
 	    // Nuevos individuos
-	    for (Genotype<G> c:crossedList){
-		out.addIndividual(breeder.newIndividual(c));
+	    for (Genotype<G> c:crossedList) {
+			out.addIndividual(breeder.newIndividual(c));
 		}
 	}
 
