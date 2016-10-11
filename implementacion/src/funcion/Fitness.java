@@ -16,7 +16,7 @@ public class Fitness implements FitnessFunction<Integer>{
 			result += distanceTable.getDistanceBetween(p.getAllele(i), p.getAllele((i+1)%p.size()));
 		}
 		
-		return (1/result);
+		return (100000/result);
     }
 
     public static int[] phenotypeToArray(Phenotype<Integer> p) {
